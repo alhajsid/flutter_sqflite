@@ -9,7 +9,7 @@ showBottom(BuildContext context, Null Function() callSetState){
   final _formKey = GlobalKey<FormState>();
 
   showModalBottomSheet(
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(25.0))),
       context: context,
       isScrollControlled: true,
@@ -40,7 +40,7 @@ showBottom(BuildContext context, Null Function() callSetState){
                           }
                           return null;
                         },
-                        decoration: InputDecoration(hintText: "Add Note"),
+                        decoration: const InputDecoration(hintText: "Add Note"),
                         onChanged: (value){
                           text = value;
                         },
