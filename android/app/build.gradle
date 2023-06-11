@@ -1,8 +1,7 @@
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
-    localPropertiesFile.withReader('UTF-8') { reader ->
-        localProperties.load(reader)
+    localPropertiesFile.withReader('UTF-8') { reader -> localProperties.load(reader)
     }
 }
 
@@ -28,6 +27,15 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 android {
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
+
+    signingConfigs {
+        releaseSigningConfig {
+            storeFile file("satrangi.jks")
+            storePassword "alhaj2000"
+            keyAlias "key0"
+            keyPassword "alhaj2000"
+        }
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -57,7 +65,7 @@ android {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.releaseSigningConfig
         }
     }
 }
@@ -69,3 +77,4 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
+
